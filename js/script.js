@@ -38,4 +38,36 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn('slow');
         });
     });
+
+    function FormValidate(item) {
+        $(item).validate({
+            rules:{
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                tel: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите своё имя",
+                    minlength: jQuery.validator.format("Нужно ввести {0} или больше символов!")
+                },
+                tel: "Пожалуйста, введите свой номер телефона",
+                email: {
+                    required: "Пожалуйста, введите вашу почту",
+                    email: "Не правильно введён адрес почты"
+                }
+            }
+        });
+    };
+
+    FormValidate('#consultation-form')
+    FormValidate('#consultation form')
+    FormValidate('#order form')
+
 });
